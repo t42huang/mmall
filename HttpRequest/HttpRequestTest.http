@@ -1,0 +1,42 @@
+###
+# curl -X 'POST'
+#  'http://localhost:8081/user/forget_check_answer.do?username=admin&question=%E9%97%AE%E9%A2%98&answer=%E7%AD%94%E6%A1%88'
+#  -H 'accept: */*'
+#  -d ''
+POST http://localhost:8081/user/forget_check_answer.do?username=admin&question=%E9%97%AE%E9%A2%98&
+    answer=%E7%AD%94%E6%A1%88
+accept: */*
+Content-Type: application/x-www-form-urlencoded
+
+###
+
+# curl -X 'GET'
+#  'http://localhost:8081/user/get_information.do'
+#  -H 'accept: */*'
+GET http://localhost:8081/user/get_information.do
+accept: */*
+
+###
+# curl -X 'GET'
+#  'http://localhost:8081/user/test_get_information.do'
+#  -H 'accept: */*'
+GET http://localhost:8081/user/test_get_information.do
+accept: */*
+
+###
+# curl -X 'POST'
+#  'http://localhost:8081/user/login.test?username=test&password=test'
+#  -H 'accept: */*'
+#  -d ''
+POST http://localhost:8081/user/login.test?username=test&password=test
+accept: */*
+Content-Type: application/x-www-form-urlencoded
+
+###
+
+
+
+
+
+
+
