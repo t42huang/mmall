@@ -51,5 +51,9 @@ public class ProductManageController {
         return iProductService.getProductList(pageNum, pageSize);
     }
 
-
+    @RequestMapping(value = "search.do", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse productSearch(String productName, Integer productId, @RequestParam(value = "pageNum",defaultValue = "1")int pageNum, @RequestParam(value = "pageSize", defaultValue = "10")int pageSize){
+        return iProductService.searchProduct(productName, productId, pageNum, pageSize);
+    }
 }

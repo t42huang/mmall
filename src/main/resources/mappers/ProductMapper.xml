@@ -182,4 +182,17 @@
     from mmall_product
     order by id asc
   </select>
+  <select id="selectByNameAndProductId" resultType="com.portal.pojo.Product">
+    select
+        <include refid="Base_Column_List"/>
+    from mmall_product
+    <where>
+        <if test="productName != null">
+          and name like #{produceName}
+        </if>
+        <if test = "productId != null">
+          and id = #{productId}
+        </if>
+    </where>
+  </select>
 </mapper>
