@@ -2,6 +2,7 @@ package com.portal.common;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.portal.vo.ProductDetailVo;
 
 import java.io.Serializable;
 
@@ -31,6 +32,7 @@ public class ServerResponse<T> implements Serializable {
         this.data = data;
         this.msg = msg;
     }
+
 
     public int getStatus() {
         return status;
@@ -76,6 +78,10 @@ public class ServerResponse<T> implements Serializable {
     }
     public static <T> ServerResponse<T> createByError(String msg, T data) {
         return new ServerResponse<T>(ResponseCode.ERROR.getCode(), msg, data);
+    }
+
+    public static <T> ServerResponse<T> createByErrorCodeMessage(int code, String desc) {
+        return new ServerResponse<T>(ResponseCode.ERROR.getCode(), desc);
     }
 
     public static void main(String[] args) {

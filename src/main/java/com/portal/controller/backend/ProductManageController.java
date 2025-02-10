@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @Author: tina.huanght
@@ -56,4 +57,14 @@ public class ProductManageController {
     public ServerResponse productSearch(String productName, Integer productId, @RequestParam(value = "pageNum",defaultValue = "1")int pageNum, @RequestParam(value = "pageSize", defaultValue = "10")int pageSize){
         return iProductService.searchProduct(productName, productId, pageNum, pageSize);
     }
+
+    //7-6, 7-7,
+    @RequestMapping(value = "upload.do", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse upload(MultipartFile file){
+        String path = "D:\\";
+        return null;
+    }
+
+
 }
