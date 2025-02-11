@@ -47,6 +47,15 @@
         where checked = 0
           and user_id = #{userId,jdbcType=INTEGER}
     </select>
+    <update id="checkeOrUncheckedAllProduct" parameterType="map">
+        UPDATE mmall_cart
+        set checked = #{checked,jdbcType=INTEGER},
+        update_time = now()
+        where user_id = #{userId,jdbcType=INTEGER}
+        <if test="productId != null">
+            and product_id = #{productId}
+        </if>
+    </update>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         delete
         from mmall_cart
