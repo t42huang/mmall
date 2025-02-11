@@ -1,5 +1,6 @@
 package com.portal.service.impl;
 
+import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import com.portal.common.Const;
 import com.portal.common.ResponseCode;
@@ -67,6 +68,17 @@ public class CartServiceImpl implements ICartService {
             cart.setQuantity(count);
         }
         cartMapper.updateByPrimaryKeySelective(cart);
+        CartVo cartVo = this.getCartVoLimit(userId);
+        return ServerResponse.createBySuccess(cartVo);
+
+    }
+
+    public ServerResponse<CartVo> delete(Integer userId, String productIds){
+        List<String> productIdList = Splitter.on(",").splitToList(productIds);
+        if(!CollectionUtils.isEmpty(productIdList)){
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.ERROR.getCode(), "参数错误");
+        }
+        cartMapper.deleteByUserIdProductIds(userId, productIdList);
         CartVo cartVo = this.getCartVoLimit(userId);
         return ServerResponse.createBySuccess(cartVo);
 

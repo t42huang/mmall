@@ -36,4 +36,11 @@ public class CartController {
                                  @RequestParam(value = "count") Integer count){
         return iCartService.update(userId, productId, count);
     }
+
+    @RequestMapping(value = "delete_product.do")
+    @ResponseBody
+    public ServerResponse deleteProduct(@RequestParam (value = "userId") Integer userId,
+                                         @RequestParam (value = "productIds") String productIds){
+        return iCartService.delete(userId, productIds);
+    }
 }
