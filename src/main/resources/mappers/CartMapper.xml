@@ -47,6 +47,11 @@
         where checked = 0
           and user_id = #{userId,jdbcType=INTEGER}
     </select>
+    <select id="selectCartProductCount" resultType="java.lang.Integer">
+        select NULLIF(sum(quantity), 0) as count
+        from mmall_cart
+        where user_id = #{userId,jdbcType=INTEGER}
+    </select>
     <update id="checkeOrUncheckedAllProduct" parameterType="map">
         UPDATE mmall_cart
         set checked = #{checked,jdbcType=INTEGER},

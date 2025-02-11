@@ -66,7 +66,7 @@ public class CartController {
     }
 
     //dandu
-    @RequestMapping(value = "unSelect_product.do")
+    @RequestMapping(value = "select.do")
     @ResponseBody
     public ServerResponse select(@RequestParam(value = "userId") Integer userId,
                                  Integer productId) {
@@ -74,7 +74,7 @@ public class CartController {
     }
 
     //单独反选
-    @RequestMapping(value = "unSelect_product.do")
+    @RequestMapping(value = "unSelect.do")
     @ResponseBody
     public ServerResponse unSelect(@RequestParam(value = "userId") Integer userId,
                                    Integer productId) {
@@ -82,5 +82,9 @@ public class CartController {
     }
 
     //查询当前用户的购物车里面的产品数量，如果一个产品有10个，那么数量就是10
-
+    @RequestMapping(value = "count_product.do")
+    @ResponseBody
+    public ServerResponse<Integer> getCartProductCount(@RequestParam(value = "userId") Integer userId) {
+        return iCartService.getCartProductCount(userId);
+    }
 }
